@@ -1,7 +1,7 @@
 ##################################################
 # global variable definitions
 ##################################################
-# source('~/global-datapath.R') before source('~/global-vars.R')
+# source('~/inv-global-datapath.R') before source('~/global-vars.R')
 # global-datapath.R on pc
 
 g_filename <- list.files(path=g_datapath, pattern='.txt')
