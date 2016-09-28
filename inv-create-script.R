@@ -2,6 +2,8 @@
 # Inventory Create Script
 ##################################################
 
+# setwd and source inv-global-datapath.R
+
 source('inv-pkgs.R')
 source('inv-global-vars.R')
 source('inv-functions.R')
