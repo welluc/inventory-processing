@@ -2,10 +2,10 @@
 # Inventory Create Script
 ##################################################
 
-source('~/inv-pkgs.R')
-source('~/inv-global-vars.R')
-source('~/inv-functions.R')
-source('~/invCreateWrapper.R')
+source('inv-pkgs.R')
+source('inv-global-vars.R')
+source('inv-functions.R')
+source('invCreateWrapper.R')
 
 inventoryAnalysisCreateWrapper(
   w_evalid='01',
