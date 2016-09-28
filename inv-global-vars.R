@@ -1,3 +1,4 @@
+```r
 ##################################################
 # global variable definitions
 ##################################################
@@ -34,3 +35,4 @@ g_convcolname <- c(
 g_convcolfunname <- rep('as.integer', times=length(g_convcolname))
 
 g_keycolname <- c('ValDate', 'BranchNumber', 'EclipseID') 
+```
