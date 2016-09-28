@@ -7,7 +7,7 @@ source('inv-global-vars.R')
 source('inv-functions.R')
 source('invCreateWrapper.R')
 
-inventoryAnalysisCreateWrapper(
+invCreateWrapper(
   w_evalid='01',
   w_minfileid=1,
   w_maxfileid=776/4 + 1,  # necessary bc of loop logic in rbindloop. look at creation of b and looping over b to understand.
@@ -22,7 +22,7 @@ inventoryAnalysisCreateWrapper(
   w_writeout=TRUE
 )
 
-inventoryAnalysisCreateWrapper(
+invCreateWrapper(
   w_evalid='02',
   w_minfileid=776/4 + 1,
   w_maxfileid=2*776/4 + 1,
@@ -37,7 +37,7 @@ inventoryAnalysisCreateWrapper(
   w_writeout=TRUE
 )
 
-inventoryAnalysisCreateWrapper(
+invCreateWrapper(
   w_evalid='03',
   w_minfileid=2*776/4 + 1,
   w_maxfileid=3*776/4 + 1,
@@ -52,7 +52,7 @@ inventoryAnalysisCreateWrapper(
   w_writeout=TRUE
 )
 
-inventoryAnalysisCreateWrapper(
+invCreateWrapper(
   w_evalid='04',
   w_minfileid=3*776/4 + 1,
   w_maxfileid=776,  # read stops at (w_maxfileid - 1) and there are 775 files
