@@ -8,11 +8,11 @@ invCreateWrapper <-
     w_invcolid,        # col names to read from source (character)
     w_timingfilename,  # name for timing txt file, will postfix with w_evalid (character)
     w_newcolid,        # new col names (character)
+    w_convflag,        # flag to control col conversion in updateInvDT (logical)
     w_convcol,         # names of col to convert (character)
     w_convcolfun,      # conversion function (character)
     w_keycol,          # col to use for key (character)
     w_savefile,        # name for object RData file, will postfix with w_evalid (character)
-    w_setkey=FALSE,    # setkey on data.table? (logical)
     w_writeout=FALSE   # write txt and RData files? (logical)
   ) {
     
@@ -51,7 +51,7 @@ invCreateWrapper <-
     start <- Sys.time()
     
     # renamedt updated by reference, no copy
-    updateInvDT(rawdt=renamedt, newcolid=w_newcolid, convcol=w_convcol, convcolfun=w_convcolfun, keycol=w_keycol)
+    updateInvDT(rawdt=renamedt, newcolid=w_newcolid, convcol=w_convcol, convcolfun=w_convcolfun, convflag=w_convflag)
     
     stop <- Sys.time()
     
