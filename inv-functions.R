@@ -99,7 +99,7 @@ invTimer <- function(t1, t2, desc, outfile, appendflag) {
   )
 }
 
-updateInvDT <- function(rawdt, newcolid, convcol, convcolfun, keycol, invcolid=g_invcol, convflag=FALSE, keyflag=FALSE) {
+updateInvDT <- function(rawdt, newcolid, convcol, convcolfun, keycol, invcolid=g_invcol, convflag) {
   
   # note: rawdt is pointer to supplied dt obj
   # so, after updateInvDT evaluates, updates will
@@ -121,12 +121,6 @@ updateInvDT <- function(rawdt, newcolid, convcol, convcolfun, keycol, invcolid=g
         funi <- funi + 1
       }
     }
-  }
-  
-  # set key for keycol combination and sort accordingly
-  # will update without copy
-  if (keyflag) {
-    setkeyv(rawdt, keycol)
   }
   
   # no return because updates done by reference
