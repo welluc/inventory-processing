@@ -24,8 +24,10 @@ g_newcolname <- c(
   'cogs12', 'sales12', 'usage12'
 )
 
+g_convflag <- TRUE
+
 g_convcolname <- c(
-  'StockStatus', 'BuyPack', 'UpToLevel', 'ReorderPoint', 'DaysOut',
+  'BuyPack', 'UpToLevel', 'ReorderPoint', 'DaysOut',
   'CustomerDemand', 'CustomerDemandDays',
   'qty_on_hand', 'usage03', 'usage12'
 )
