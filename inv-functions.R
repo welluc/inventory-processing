@@ -99,7 +99,7 @@ invTimer <- function(t1, t2, desc, outfile, appendflag) {
   )
 }
 
-updateInvDT <- function(rawdt, newcolid, convcol, convcolfun, keycol, invcolid=g_invcol, convflag) {
+updateInvDT <- function(rawdt, newcolid, convcol, convcolfun, keycol, invcolid=g_invcol, convflag=g_convflag) {
   
   # note: rawdt is pointer to supplied dt obj
   # so, after updateInvDT evaluates, updates will
