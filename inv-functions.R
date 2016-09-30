@@ -98,36 +98,3 @@ invTimer <- function(t1, t2, desc, outfile, appendflag) {
     append=appendflag
   )
 }
-
-updateInvDT <- function(rawdt, newcolid, convcol, convcolfun, keycol, invcolid=g_invcol, convflag=FALSE, keyflag=FALSE) {
-  
-  # note: rawdt is pointer to supplied dt obj
-  # so, after updateInvDT evaluates, updates will
-  # be reflected in supplied rawdt AND supplied dt obj
-  # thus, either name can be used downstream (1 object, 2 names)
-  
-  setcolorder(rawdt, invcolid)
-  colnames(rawdt) <- newcolid
-  
-  # to stay within memory bound, loop 1 column at a time
-  # convert each convcol using corresponding convcolfun 
-  # will update without copy
-  if (convflag) {
-    if (length(convcol) > 0) {
-      funi <- 1
-      for (col in convcol) {
-        FUN <- match.fun(convcolfun[funi])
-        rawdt[, (col) := FUN(rawdt[[col]])]
-        funi <- funi + 1
-      }
-    }
-  }
-  
-  # set key for keycol combination and sort accordingly
-  # will update without copy
-  if (keyflag) {
-    setkeyv(rawdt, keycol)
-  }
-  
-  # no return because updates done by reference
-}
