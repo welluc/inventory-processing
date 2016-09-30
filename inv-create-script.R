@@ -20,7 +20,6 @@ invCreateWrapper(
   w_convflag=g_convflag,
   w_convcol=g_convcolname,
   w_convcolfun=g_convcolfunname,
-  w_keycol=g_keycolname,
   w_savefile='invdt',
   w_writeout=TRUE
 )
@@ -36,7 +35,6 @@ invCreateWrapper(
   w_convflag=g_convflag,
   w_convcol=g_convcolname,
   w_convcolfun=g_convcolfunname,
-  w_keycol=g_keycolname,
   w_savefile='invdt',
   w_writeout=TRUE
 )
@@ -52,7 +50,6 @@ invCreateWrapper(
   w_convflag=g_convflag,
   w_convcol=g_convcolname,
   w_convcolfun=g_convcolfunname,
-  w_keycol=g_keycolname,
   w_savefile='invdt',
   w_writeout=TRUE
 )
@@ -68,7 +65,6 @@ invCreateWrapper(
   w_convflag=g_convflag,
   w_convcol=g_convcolname,
   w_convcolfun=g_convcolfunname,
-  w_keycol=g_keycolname,
   w_savefile='invdt',
   w_writeout=TRUE
 )
