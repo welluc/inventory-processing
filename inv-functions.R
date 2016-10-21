@@ -5,54 +5,34 @@
 importInvFile <- function(minfileid, maxfileid, nidgrp, invcolid=g_invcol, datapath=g_datapath, filename=g_filename) {
   
   # cols in alphabetical order so sort invcolid first
-  rbindLoop <- function(dt, filenum, rbl_datapath=datapath, rbl_filename=filename, rbl_colname=sort(invcolid), maxbytes=3*1024^3, bytemargin=1024^2) {
+  rbindLoop <- function(dt, filenum, rbl_datapath=datapath, rbl_filename=filename, rbl_colname=sort(invcolid)) {
     
-    objsize <- object.size(dt)  # in bytes
     if (length(filenum) > 0 & nrow(dt) > 0) {
       filenum <- sort(filenum)
       maxfilenum <- max(filenum)
       j <- 1
       
       # only execute loop if still have files to read
-      # and next read will not go over memory bound
-      while (j <= length(filenum) & objsize <= (maxbytes - bytemargin)) {
+      while (j <= length(filenum)) {
         i <- filenum[j]
-        cat(
-          'i = ', i, 
-          ' and object size = ', format(objsize, units='MB'),
-          '\n')
         
         tempdt <- fread(
           input=file.path(rbl_datapath, rbl_filename[i]),
-          sep='|',
           header=TRUE,
           verbose=FALSE,
           showProgress=FALSE,
           select=rbl_colname
         )
         
-        objsize <- objsize + object.size(tempdt)
-        
-        ifelse(
-          objsize <= maxbytes, 
-          dt <- rbind(dt, tempdt), 
-          return(cat('cannot rbind on iteration i = ', i, 'because objsize > ', maxbytes, '\n'))
-        )
+        dt <- rbind(dt, tempdt)
         
         j <- j + 1
       }
       
-      if (i==maxfilenum) {
-        cat('complete\n')
-        return(dt)
-      } else {
-        cat('not complete: stopped on i = ', i, '\n')
-        return(dt)
-      }
+      return(dt)
       
     } else {
-      cat('dt has 0 rows or zero files to be read and bound')
-      return(FALSE)
+      return(NA)
     }
   }
   
@@ -62,7 +42,6 @@ importInvFile <- function(minfileid, maxfileid, nidgrp, invcolid=g_invcol, datap
   foo <- function(b, fooid=id, foodatapath=datapath, foofilename=filename, fooinvcolid=sort(invcolid)) {
     branchdt <- fread(
       input=file.path(foodatapath, foofilename[fooid[b]]),
-      sep='|',
       header=TRUE,
       verbose=FALSE,
       showProgress=FALSE,
@@ -80,7 +59,7 @@ importInvFile <- function(minfileid, maxfileid, nidgrp, invcolid=g_invcol, datap
   }
   stopCluster(cl)
   
-  tempbranchdt <- do.call(rbind, tempbranchdt)
+  tempbranchdt <- rbindlist(tempbranchdt)
   return(tempbranchdt)
 }
 
